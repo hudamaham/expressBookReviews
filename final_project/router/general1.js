@@ -12,20 +12,13 @@ public_users.post("/register", (req,res) => {
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
- 
-    let myPromise1 = new Promise((resolve,reject) => {
-        setTimeout(() => {
-            return res.send(JSON.stringify(books,null,4));
-        },6000)})
+    return res.send(JSON.stringify(books,null,4));
 });
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
  
-  let myPromise1 = new Promise((resolve,reject) => {
-    setTimeout(() => {
-       
   const isbn = req.params.isbn;
   let filtered_books = {};
   for (const [key, value] of Object.entries(books)) {
@@ -34,17 +27,13 @@ public_users.get('/isbn/:isbn',function (req, res) {
         filtered_books[key]=value
     }
   }
+  return res.send(JSON.stringify(filtered_books,null,4));
  
-  return res.send(JSON.stringify(books,null,4));
-},6000)})
  
  });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
-    let myPromise1 = new Promise((resolve,reject) => {
-        setTimeout(() => {
-            
     const author = req.params.author;
   let filtered_books = {};
   for (const [key, value] of Object.entries(books)) {
@@ -54,15 +43,10 @@ public_users.get('/author/:author',function (req, res) {
     }
   }
   return res.send(JSON.stringify(filtered_books,null,4));
- 
-},6000)})
 });
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
-    let myPromise1 = new Promise((resolve,reject) => {
-        setTimeout(() => {
-        
     const title = req.params.title;
     let filtered_books = {};
     for (const [key, value] of Object.entries(books)) {
@@ -72,8 +56,6 @@ public_users.get('/title/:title',function (req, res) {
       }
     }
     return res.send(JSON.stringify(filtered_books,null,4));
-    
-},6000)})
 });
 
 //  Get book review
